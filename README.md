@@ -18,3 +18,4 @@
 &nbsp;
 
 **⏱ Currently, the game is only playable in the console. I will add a UI as I progress.**
+[Try it out!](http://selormdev.me/TOP-rock-paper-scissors/)
