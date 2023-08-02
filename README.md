@@ -1,4 +1,6 @@
-# Rock✊ Paper✋ Scissors✌ Project from [The Odin Project](https://www.theodinproject.com/paths/foundations/courses/foundations)
+# Rock✊ Paper✋ Scissors✌
+
+**Project from [The Odin Project](https://www.theodinproject.com/paths/foundations/courses/foundations)**
 
 ## Description
 
