@@ -41,9 +41,9 @@ let info;
 
 const checkWinner = function (userChoice, computerChoice) {
   if (userChoice === computerChoice) {
-    stat = 0;
-
-    return "It's a tie";
+    stat = 2;
+    info = "It's a tie";
+    return info;
   } else if (userChoice === "rock" && computerChoice === "paper") {
     stat = 0;
     computerScore++;
@@ -92,4 +92,4 @@ const playGame = function () {
   }
 };
 
-// playGame();
+playGame();
