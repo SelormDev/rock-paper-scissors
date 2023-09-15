@@ -23,13 +23,10 @@ function computerSelection() {
   switch (Math.floor(Math.random() * 3)) {
     case 0:
       return "rock";
-      break;
     case 1:
       return "paper";
-      break;
     case 2:
       return "scissors";
-      break;
     default:
       return "Error";
   }
@@ -94,12 +91,14 @@ const playGame = function () {
 
 // playGame();
 
-//  UI Functionality
+/* ----------------------------------------------------- */
+
+// --------------- UI Functionality --------------------
 
 let container = document.querySelector(".container");
 
 let containerDiv = document.createElement("div");
-let headerMessage = document.createElement("h2");
+// let headerMessage = document.createElement("h2");
 let btn = document.createElement("button");
 let message = document.createElement("p");
 let reset = document.createElement("p");
@@ -113,6 +112,35 @@ const firstUI = () => {
   message.classList.add("p");
   container.appendChild(btn);
   container.appendChild(message);
+
+  btn.addEventListener("click", secondUI);
+  changeUI("secondUI");
+};
+
+const secondUI = () => {
+  message.textContent = "Rock Paper Scisors By SelormDev";
+  reset.textContent = "Reset the tour";
+
+  computerChoice.textContent = "Computer Score";
+  playerChoice.textContent = "Player Score";
+  containerDiv.appendChild(playerChoice);
+  containerDiv.appendChild(computerChoice);
+
+  container.appendChild(message);
+  container.appendChild(reset);
+  container.appendChild(containerDiv);
+
+  changeUI("firstUI");
+};
+
+const changeUI = function (ui) {
+  if (ui === "secondUI") {
+    container.removeChild(reset);
+    container.removeChild(containerDiv);
+  } else if (ui === "firstUI") {
+    container.removeChild(btn);
+    container.removeChild(message);
+  }
 };
 
 firstUI();
