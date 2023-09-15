@@ -97,50 +97,69 @@ const playGame = function () {
 
 let container = document.querySelector(".container");
 
-let containerDiv = document.createElement("div");
-// let headerMessage = document.createElement("h2");
+let scoreContainer = document.createElement("div");
+let buttonDiv = document.createElement("div");
 let btn = document.createElement("button");
-let message = document.createElement("p");
+let btn1 = document.createElement("button");
+let btn2 = document.createElement("button");
+let btn3 = document.createElement("button");
+let message1 = document.createElement("p");
+let message2 = document.createElement("p");
+let message3 = document.createElement("p");
 let reset = document.createElement("p");
 let computerChoice = document.createElement("p");
 let playerChoice = document.createElement("p");
+let img = document.createElement("img");
 
 const firstUI = () => {
   btn.textContent = "Play";
   btn.classList.add("btn");
-  message.textContent = "Rock Paper Scisors By SelormDev";
-  message.classList.add("p");
-  container.appendChild(btn);
-  container.appendChild(message);
+  message1.textContent = "Rock Paper Scisors By SelormDev";
+  message1.classList.add("p");
+  container.append(btn, message1);
 
   btn.addEventListener("click", secondUI);
   changeUI("secondUI");
 };
 
 const secondUI = () => {
-  message.textContent = "Rock Paper Scisors By SelormDev";
+  message2.textContent = "Rock Paper Scisors By SelormDev";
   reset.textContent = "Reset the tour";
+  btn1.textContent = "Rock";
+  btn2.textContent = "Paper";
+  btn3.textContent = "Scisssors";
 
-  computerChoice.textContent = "Computer Score";
-  playerChoice.textContent = "Player Score";
-  containerDiv.appendChild(playerChoice);
-  containerDiv.appendChild(computerChoice);
+  computerChoice.textContent = "Computer Score: ";
+  playerChoice.textContent = "Player Score: ";
+  scoreContainer.append(playerChoice, computerChoice);
+  scoreContainer.classList.add("score-container");
 
-  container.appendChild(message);
-  container.appendChild(reset);
-  container.appendChild(containerDiv);
+  img.src = "./img/Paper-left-hand.png";
+  img.classList.add("img-style");
 
+  message3.textContent = "Choose your move, Rock, Paper or Scissors?";
+  buttonDiv.classList.add("btnParent");
+  btn1.classList.add("btn", "btn-game");
+  btn2.classList.add("btn", "btn-game");
+  btn3.classList.add("btn", "btn-game");
+  buttonDiv.append(btn1, btn2, btn3);
+
+  container.append(message2, reset, scoreContainer, img, message3, buttonDiv);
   changeUI("firstUI");
 };
 
 const changeUI = function (ui) {
   if (ui === "secondUI") {
     container.removeChild(reset);
-    container.removeChild(containerDiv);
+    container.removeChild(scoreContainer);
   } else if (ui === "firstUI") {
     container.removeChild(btn);
-    container.removeChild(message);
+    container.removeChild(message1);
   }
+
+  container.classList.toggle("first-ui");
+  container.classList.toggle("second-ui");
 };
 
 firstUI();
+// secondUI();

@@ -21,6 +21,16 @@ body {
   padding: 20%;
 }
 
+.second-ui {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20%;
+}
+
 .btn {
   width: 200px;
   height: 130px;
@@ -35,12 +45,34 @@ body {
   /* transition: all 0.3s ease-in-out; */
 }
 
+.btn-game {
+  height: 90px;
+}
+
+.btnParent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
 .p {
   width: 50%;
   font-size: 3rem;
   margin: 4rem auto;
   color: #070a52;
   text-align: center;
+}
+
+.score-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 50%;
+}
+
+.img-style {
+  transform: scaleX(-1);
+  margin-left: 425px;
 }
 
 img {
