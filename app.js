@@ -93,3 +93,26 @@ const playGame = function () {
 };
 
 // playGame();
+
+//  UI Functionality
+
+let container = document.querySelector(".container");
+
+let containerDiv = document.createElement("div");
+let headerMessage = document.createElement("h2");
+let btn = document.createElement("button");
+let message = document.createElement("p");
+let reset = document.createElement("p");
+let computerChoice = document.createElement("p");
+let playerChoice = document.createElement("p");
+
+const firstUI = () => {
+  btn.textContent = "Play";
+  btn.classList.add("btn");
+  message.textContent = "Rock Paper Scisors By SelormDev";
+  message.classList.add("p");
+  container.appendChild(btn);
+  container.appendChild(message);
+};
+
+firstUI();
