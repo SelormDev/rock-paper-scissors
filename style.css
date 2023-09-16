@@ -70,11 +70,16 @@ body {
   width: 50%;
 }
 
-.img-style {
-  transform: scaleX(-1);
-  margin-left: 425px;
+.image-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
 }
 
-img {
-  margin-left: -425px;
+.transform {
+  transform: scaleX(-1);
+}
+
+.invert-color {
+  filter: invert(1);
 }

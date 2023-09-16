@@ -98,18 +98,25 @@ const playGame = function () {
 let container = document.querySelector(".container");
 
 let scoreContainer = document.createElement("div");
+let imageContainer = document.createElement("div");
 let buttonDiv = document.createElement("div");
 let btn = document.createElement("button");
 let btn1 = document.createElement("button");
 let btn2 = document.createElement("button");
 let btn3 = document.createElement("button");
+let testBtn = document.createElement("button"); //! Delete Later
 let message1 = document.createElement("p");
 let message2 = document.createElement("p");
 let message3 = document.createElement("p");
 let reset = document.createElement("p");
 let computerChoice = document.createElement("p");
 let playerChoice = document.createElement("p");
-let img = document.createElement("img");
+let rockLeft = document.createElement("img");
+let rockRight = document.createElement("img");
+let paperLeft = document.createElement("img");
+let paperRight = document.createElement("img");
+let scissorsLeft = document.createElement("img");
+let scissorsRight = document.createElement("img");
 
 const firstUI = () => {
   btn.textContent = "Play";
@@ -129,13 +136,21 @@ const secondUI = () => {
   btn2.textContent = "Paper";
   btn3.textContent = "Scisssors";
 
+  testBtn.textContent = "Return";
+
   computerChoice.textContent = "Computer Score: ";
   playerChoice.textContent = "Player Score: ";
   scoreContainer.append(playerChoice, computerChoice);
   scoreContainer.classList.add("score-container");
 
-  img.src = "./img/Paper-left-hand.png";
-  img.classList.add("img-style");
+  rockLeft.src = "./img/rock-left-hand.png";
+  rockLeft.classList.add("transform", "invert-color");
+
+  paperRight.src = "./img/Paper-left-hand.png";
+  paperRight.classList.add("transform");
+
+  imageContainer.append(rockLeft, paperRight);
+  imageContainer.classList.add("image-container");
 
   message3.textContent = "Choose your move, Rock, Paper or Scissors?";
   buttonDiv.classList.add("btnParent");
@@ -144,14 +159,29 @@ const secondUI = () => {
   btn3.classList.add("btn", "btn-game");
   buttonDiv.append(btn1, btn2, btn3);
 
-  container.append(message2, reset, scoreContainer, img, message3, buttonDiv);
+  container.append(
+    message2,
+    testBtn,
+    reset,
+    scoreContainer,
+    imageContainer,
+    message3,
+    buttonDiv
+  );
+
+  testBtn.addEventListener("click", firstUI);
   changeUI("firstUI");
 };
 
 const changeUI = function (ui) {
   if (ui === "secondUI") {
     container.removeChild(reset);
+    container.removeChild(testBtn);
+    container.removeChild(buttonDiv);
+    container.removeChild(message2);
+    container.removeChild(message3);
     container.removeChild(scoreContainer);
+    container.removeChild(imageContainer);
   } else if (ui === "firstUI") {
     container.removeChild(btn);
     container.removeChild(message1);
