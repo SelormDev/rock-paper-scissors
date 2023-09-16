@@ -105,10 +105,10 @@ let btn1 = document.createElement("button");
 let btn2 = document.createElement("button");
 let btn3 = document.createElement("button");
 let testBtn = document.createElement("button"); //! Delete Later
-let message1 = document.createElement("p");
-let message2 = document.createElement("p");
-let message3 = document.createElement("p");
-let reset = document.createElement("p");
+let greetings = document.createElement("p");
+let headerMessage = document.createElement("p");
+let winMessage = document.createElement("p");
+let decideMessage = document.createElement("p");
 let computerChoice = document.createElement("p");
 let playerChoice = document.createElement("p");
 let rockLeft = document.createElement("img");
@@ -121,25 +121,28 @@ let scissorsRight = document.createElement("img");
 const firstUI = () => {
   btn.textContent = "Play";
   btn.classList.add("btn");
-  message1.textContent = "Rock Paper Scisors By SelormDev";
-  message1.classList.add("p");
-  container.append(btn, message1);
+  greetings.textContent = "Rock Paper Scisors By SelormDev";
+  greetings.classList.add("greetings");
+  container.append(btn, greetings);
 
   btn.addEventListener("click", secondUI);
   changeUI("secondUI");
 };
 
 const secondUI = () => {
-  message2.textContent = "Rock Paper Scisors By SelormDev";
-  reset.textContent = "Reset the tour";
+  headerMessage.textContent = "Rock Paper Scisors By SelormDev";
+  headerMessage.classList.add("header-message");
   btn1.textContent = "Rock";
   btn2.textContent = "Paper";
   btn3.textContent = "Scisssors";
 
   testBtn.textContent = "Return";
+  testBtn.classList.add("btn", "btn-test");
 
   computerChoice.textContent = "Computer Score: ";
   playerChoice.textContent = "Player Score: ";
+  computerChoice.classList.add("score-text");
+  playerChoice.classList.add("score-text");
   scoreContainer.append(playerChoice, computerChoice);
   scoreContainer.classList.add("score-container");
 
@@ -152,7 +155,8 @@ const secondUI = () => {
   imageContainer.append(rockLeft, paperRight);
   imageContainer.classList.add("image-container");
 
-  message3.textContent = "Choose your move, Rock, Paper or Scissors?";
+  decideMessage.textContent = "Choose your move, Rock, Paper or Scissors?";
+  decideMessage.classList.add("decide-text");
   buttonDiv.classList.add("btnParent");
   btn1.classList.add("btn", "btn-game");
   btn2.classList.add("btn", "btn-game");
@@ -160,12 +164,12 @@ const secondUI = () => {
   buttonDiv.append(btn1, btn2, btn3);
 
   container.append(
-    message2,
+    headerMessage,
     testBtn,
-    reset,
     scoreContainer,
+    winMessage,
     imageContainer,
-    message3,
+    decideMessage,
     buttonDiv
   );
 
@@ -175,16 +179,15 @@ const secondUI = () => {
 
 const changeUI = function (ui) {
   if (ui === "secondUI") {
-    container.removeChild(reset);
     container.removeChild(testBtn);
     container.removeChild(buttonDiv);
-    container.removeChild(message2);
-    container.removeChild(message3);
+    container.removeChild(headerMessage);
+    container.removeChild(decideMessage);
     container.removeChild(scoreContainer);
     container.removeChild(imageContainer);
   } else if (ui === "firstUI") {
     container.removeChild(btn);
-    container.removeChild(message1);
+    container.removeChild(greetings);
   }
 
   container.classList.toggle("first-ui");

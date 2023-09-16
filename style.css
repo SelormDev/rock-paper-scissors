@@ -49,14 +49,20 @@ body {
   height: 90px;
 }
 
+.btn-test {
+  width: 150px;
+  padding: 1rem;
+  margin: 0 0 2rem;
+}
+
 .btnParent {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 2rem;
+  margin: 2rem 0 -10rem;
 }
 
-.p {
+.greetings {
   width: 50%;
   font-size: 3rem;
   margin: 4rem auto;
@@ -64,10 +70,34 @@ body {
   text-align: center;
 }
 
+.header-message {
+  font-weight: 600;
+  font-size: 3rem;
+  color: #070a52;
+  text-align: center;
+  margin: -15rem 0 3rem 0;
+}
+
+.score-text {
+  font-size: 1.5rem;
+  color: #070a52;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.decide-text {
+  font-size: 1.3rem;
+  color: #070a52;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 2rem;
+}
+
 .score-container {
   display: flex;
   justify-content: space-evenly;
-  width: 50%;
+  width: 100%;
 }
 
 .image-container {
