@@ -37,26 +37,7 @@ let targetScore = 5;
 let userChoice;
 let computerChoice;
 
-// const playGame = function () {
-//   while (userScore !== targetScore && computerScore !== targetScore) {
-//     // let userChoice = prompt(
-//     //   "Choose between rock, paper, and scissors"
-//     // ).toLowerCase();
-//     computerChoice = computerSelection();
-//     checkWinner(userChoice, computerChoice);
-//     console.log(info);
-//     console.log(`Your Score: ${userScore} - Computer Score: ${computerScore}`);
-//   }
-// };
-
-// playGame();
-
-/* ----------------------------------------------------- */
-
-// --------------- UI Functionality --------------------
-
 let container = document.querySelector(".container");
-
 let scoreContainer = document.createElement("div");
 let imageContainer = document.createElement("div");
 let buttonDiv = document.createElement("div");
@@ -64,7 +45,8 @@ let btn = document.createElement("button");
 let rockBtn = document.createElement("button");
 let paperBtn = document.createElement("button");
 let scissorsBtn = document.createElement("button");
-let returnBtn = document.createElement("button"); //! Delete Later
+let returnBtn = document.createElement("button");
+let newGameBtn = document.createElement("button");
 let greetings = document.createElement("p");
 let headerMessage = document.createElement("p");
 let winMessage = document.createElement("p");
@@ -85,6 +67,8 @@ const firstUI = () => {
   greetings.classList.add("greetings");
   container.append(btn, greetings);
 
+  playerHand.classList.remove("transform", "invert-color");
+
   btn.addEventListener("click", secondUI);
   changeUI("secondUI");
 };
@@ -93,8 +77,8 @@ const firstUI = () => {
 /*--------------------Game Page--------------------*/
 
 const secondUI = () => {
-  let userScore = 0;
   let computerScore = 0;
+  let userScore = 0;
 
   const checkWinner = function (userChoice, computerChoice) {
     if (userChoice === computerChoice) {
@@ -120,19 +104,52 @@ const secondUI = () => {
     } else {
       return -1;
     }
+
+    if (userScore === 5) {
+      winMessage.textContent = "YOU WON THE GAME!🥇🎉";
+      disableBtn(rockBtn);
+      disableBtn(paperBtn);
+      disableBtn(scissorsBtn);
+      newGameBtn.addEventListener("click", newGame);
+    } else if (computerScore === 5) {
+      winMessage.textContent = "YOU LOST TO A MACHINE!";
+      disableBtn(rockBtn);
+      disableBtn(paperBtn);
+      disableBtn(scissorsBtn);
+      newGameBtn.addEventListener("click", newGame);
+    }
   };
-  // Heading
+
   headerMessage.textContent = "Rock Paper Scisors By SelormDev";
   headerMessage.classList.add("header-message");
 
-  // Playing Buttons (Rock, Paper, Scissors)
+  winMessage.classList.add("win-message");
+
   rockBtn.textContent = "Rock";
   paperBtn.textContent = "Paper";
   scissorsBtn.textContent = "Scisssors";
-  // Test Button
+
+  newGameBtn.textContent = "New Game";
+  newGameBtn.classList.add("btn", "new-game");
+
+  const newGame = () => {
+    userScore = 0;
+    computerScore = 0;
+    computerScoreOutput.textContent = `Computer Score: ${computerScore}`;
+    playerScoreOutput.textContent = `Player Score: ${userScore}`;
+    winMessage.textContent = "";
+    info.textContent = "";
+    rockBtn.disabled = false;
+    paperBtn.disabled = false;
+    scissorsBtn.disabled = false;
+
+    changeUI("firstUI");
+  };
+  newGameBtn.addEventListener("click", newGame);
+
   returnBtn.textContent = "Return";
-  returnBtn.classList.add("btn", "btn-test");
-  // Score Kepping message
+  returnBtn.classList.add("btn");
+
   computerScoreOutput.classList.add("score-text");
   playerScoreOutput.classList.add("score-text");
   scoreContainer.append(computerScoreOutput, playerScoreOutput);
@@ -156,7 +173,11 @@ const secondUI = () => {
   scissorsBtn.classList.add("btn", "btn-game");
   buttonDiv.append(rockBtn, paperBtn, scissorsBtn);
 
-  returnBtn.addEventListener("click", firstUI);
+  const disableBtn = (btn) => {
+    btn.disabled = true;
+  };
+
+  // returnBtn.addEventListener("click", firstUI);
 
   rockBtn.addEventListener("click", function () {
     userChoice = "rock";
@@ -227,7 +248,7 @@ const secondUI = () => {
 
   container.append(
     headerMessage,
-    returnBtn,
+    newGameBtn,
     scoreContainer,
     winMessage,
     imageContainer,
@@ -247,9 +268,11 @@ const changeUI = function (ui) {
     container.removeChild(decideMessage);
     container.removeChild(scoreContainer);
     container.removeChild(imageContainer);
+    container.removeChild(info);
   } else if (ui === "firstUI") {
     container.removeChild(btn);
     container.removeChild(greetings);
+    // computerScore = 0;
   }
 
   container.classList.toggle("first-ui");
@@ -257,4 +280,3 @@ const changeUI = function (ui) {
 };
 
 firstUI();
-// secondUI();

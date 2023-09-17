@@ -49,10 +49,10 @@ body {
   height: 90px;
 }
 
-.btn-test {
-  width: 150px;
+.new-game {
+  margin-right: 30px;
   padding: 1rem;
-  margin: 0 0 2rem;
+  height: 90px;
 }
 
 .btnParent {
@@ -60,25 +60,6 @@ body {
   justify-content: center;
   align-items: center;
   margin: 2rem 0 -10rem;
-}
-
-@keyframes tilt {
-  0% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(10deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-}
-
-.hand {
-  animation-name: tilt;
-  animation-duration: 0.5s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
 }
 
 .greetings {
@@ -97,12 +78,20 @@ body {
   margin: -15rem 0 3rem 0;
 }
 
+.win-message {
+  font-weight: 600;
+  margin: 0 0 20px 40px;
+  font-size: 2rem;
+  color: #df2e38;
+  text-align: center;
+}
+
 .score-text {
   font-size: 1.5rem;
   color: #070a52;
   font-weight: 400;
   text-align: center;
-  margin-bottom: 2rem;
+  margin: 2rem 0;
 }
 
 .message-text {
