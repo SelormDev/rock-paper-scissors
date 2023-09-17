@@ -33,56 +33,21 @@ function computerSelection() {
 }
 
 let targetScore = 5;
-let userScore = 0;
-let computerScore = 0;
+
 let userChoice;
 let computerChoice;
-let info;
 
-const checkWinner = function (userChoice, computerChoice) {
-  if (userChoice === computerChoice) {
-    info = "It's a tie";
-    return info;
-  } else if (userChoice === "rock" && computerChoice === "paper") {
-    computerScore++;
-    info = "Rock lost to Paper";
-    return info;
-  } else if (userChoice === "rock" && computerChoice === "scissors") {
-    userScore++;
-    info = "You won, Rock beats Scissors";
-    return info;
-  } else if (userChoice === "paper" && computerChoice === "rock") {
-    userScore++;
-    info = "You won, Paper beats Rock";
-    return info;
-  } else if (userChoice === "paper" && computerChoice === "scissors") {
-    computerScore++;
-    info = "Paper lost to Scissors";
-    return info;
-  } else if (userChoice === "scissors" && computerChoice === "rock") {
-    computerScore++;
-    info = "Scissors lost to Rock";
-    return info;
-  } else if (userChoice === "scissors" && computerChoice === "paper") {
-    userScore++;
-    info = "You won, Scissors beats paper";
-    return info;
-  } else {
-    return -1;
-  }
-};
-
-const playGame = function () {
-  while (userScore !== targetScore && computerScore !== targetScore) {
-    // let userChoice = prompt(
-    //   "Choose between rock, paper, and scissors"
-    // ).toLowerCase();
-    computerChoice = computerSelection();
-    checkWinner(userChoice, computerChoice);
-    console.log(info);
-    console.log(`Your Score: ${userScore} - Computer Score: ${computerScore}`);
-  }
-};
+// const playGame = function () {
+//   while (userScore !== targetScore && computerScore !== targetScore) {
+//     // let userChoice = prompt(
+//     //   "Choose between rock, paper, and scissors"
+//     // ).toLowerCase();
+//     computerChoice = computerSelection();
+//     checkWinner(userChoice, computerChoice);
+//     console.log(info);
+//     console.log(`Your Score: ${userScore} - Computer Score: ${computerScore}`);
+//   }
+// };
 
 // playGame();
 
@@ -99,13 +64,14 @@ let btn = document.createElement("button");
 let rockBtn = document.createElement("button");
 let paperBtn = document.createElement("button");
 let scissorsBtn = document.createElement("button");
-let testBtn = document.createElement("button"); //! Delete Later
+let returnBtn = document.createElement("button"); //! Delete Later
 let greetings = document.createElement("p");
 let headerMessage = document.createElement("p");
 let winMessage = document.createElement("p");
+let info = document.createElement("p");
 let decideMessage = document.createElement("p");
-let computerScoreChoice = document.createElement("p");
-let playerChoice = document.createElement("p");
+let computerScoreOutput = document.createElement("p");
+let playerScoreOutput = document.createElement("p");
 let computerHand = document.createElement("img");
 let playerHand = document.createElement("img");
 
@@ -127,6 +93,34 @@ const firstUI = () => {
 /*--------------------Game Page--------------------*/
 
 const secondUI = () => {
+  let userScore = 0;
+  let computerScore = 0;
+
+  const checkWinner = function (userChoice, computerChoice) {
+    if (userChoice === computerChoice) {
+      info.textContent = "It's a tie";
+    } else if (userChoice === "rock" && computerChoice === "paper") {
+      computerScore++;
+      info.textContent = "Rock lost to Paper";
+    } else if (userChoice === "rock" && computerChoice === "scissors") {
+      userScore++;
+      info.textContent = "You won, Rock beats Scissors";
+    } else if (userChoice === "paper" && computerChoice === "rock") {
+      userScore++;
+      info.textContent = "You won, Paper beats Rock";
+    } else if (userChoice === "paper" && computerChoice === "scissors") {
+      computerScore++;
+      info.textContent = "Paper lost to Scissors";
+    } else if (userChoice === "scissors" && computerChoice === "rock") {
+      computerScore++;
+      info.textContent = "Scissors lost to Rock";
+    } else if (userChoice === "scissors" && computerChoice === "paper") {
+      userScore++;
+      info.textContent = "You won, Scissors beats paper";
+    } else {
+      return -1;
+    }
+  };
   // Heading
   headerMessage.textContent = "Rock Paper Scisors By SelormDev";
   headerMessage.classList.add("header-message");
@@ -136,14 +130,12 @@ const secondUI = () => {
   paperBtn.textContent = "Paper";
   scissorsBtn.textContent = "Scisssors";
   // Test Button
-  testBtn.textContent = "Return";
-  testBtn.classList.add("btn", "btn-test");
+  returnBtn.textContent = "Return";
+  returnBtn.classList.add("btn", "btn-test");
   // Score Kepping message
-  computerScoreChoice.textContent = `Computer Score: ${computerScore}`;
-  playerChoice.textContent = `Player Score: ${userScore}`;
-  computerScoreChoice.classList.add("score-text");
-  playerChoice.classList.add("score-text");
-  scoreContainer.append(computerScoreChoice, playerChoice);
+  computerScoreOutput.classList.add("score-text");
+  playerScoreOutput.classList.add("score-text");
+  scoreContainer.append(computerScoreOutput, playerScoreOutput);
   scoreContainer.classList.add("score-container");
 
   computerHand.src = "./img/rock1.png";
@@ -153,8 +145,10 @@ const secondUI = () => {
   imageContainer.append(computerHand, playerHand);
   imageContainer.classList.add("image-container");
 
+  info.classList.add("message-text");
+
   decideMessage.textContent = "Choose your move, Rock, Paper or Scissors?";
-  decideMessage.classList.add("decide-text");
+  decideMessage.classList.add("message-text");
 
   buttonDiv.classList.add("btnParent");
   rockBtn.classList.add("btn", "btn-game");
@@ -162,7 +156,7 @@ const secondUI = () => {
   scissorsBtn.classList.add("btn", "btn-game");
   buttonDiv.append(rockBtn, paperBtn, scissorsBtn);
 
-  testBtn.addEventListener("click", firstUI);
+  returnBtn.addEventListener("click", firstUI);
 
   rockBtn.addEventListener("click", function () {
     userChoice = "rock";
@@ -180,6 +174,9 @@ const secondUI = () => {
       computerHand.src = "./img/scissors1.png";
       computerHand.classList.add("transform", "invert-color");
     }
+    checkWinner(userChoice, computerChoice);
+    computerScoreOutput.textContent = `Computer Score: ${computerScore}`;
+    playerScoreOutput.textContent = `Player Score: ${userScore}`;
   });
 
   paperBtn.addEventListener("click", function () {
@@ -199,7 +196,10 @@ const secondUI = () => {
       computerHand.src = "./img/scissors1.png";
       computerHand.classList.add("transform", "invert-color");
     }
-    console.log(checkWinner(userChoice, computerChoice));
+
+    checkWinner(userChoice, computerChoice);
+    computerScoreOutput.textContent = `Computer Score: ${computerScore}`;
+    playerScoreOutput.textContent = `Player Score: ${userScore}`;
   });
 
   scissorsBtn.addEventListener("click", function () {
@@ -220,14 +220,18 @@ const secondUI = () => {
       computerHand.src = "./img/scissors1.png";
       computerHand.classList.add("transform", "invert-color");
     }
+    checkWinner(userChoice, computerChoice);
+    computerScoreOutput.textContent = `Computer Score: ${computerScore}`;
+    playerScoreOutput.textContent = `Player Score: ${userScore}`;
   });
 
   container.append(
     headerMessage,
-    testBtn,
+    returnBtn,
     scoreContainer,
     winMessage,
     imageContainer,
+    info,
     decideMessage,
     buttonDiv
   );
@@ -237,7 +241,7 @@ const secondUI = () => {
 
 const changeUI = function (ui) {
   if (ui === "secondUI") {
-    container.removeChild(testBtn);
+    container.removeChild(returnBtn);
     container.removeChild(buttonDiv);
     container.removeChild(headerMessage);
     container.removeChild(decideMessage);
