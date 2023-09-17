@@ -62,6 +62,25 @@ body {
   margin: 2rem 0 -10rem;
 }
 
+@keyframes tilt {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.hand {
+  animation-name: tilt;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
 .greetings {
   width: 50%;
   font-size: 3rem;
