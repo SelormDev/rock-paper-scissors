@@ -5,6 +5,8 @@
 ## Overview
 
 This project, part of [The Odin Project](https://www.theodinproject.com/paths/foundations/courses/foundations), was a practical exercise in DOM manipulation using CSS and JavaScript. While the project's user interface may not be visually polished, it successfully demonstrates effective DOM manipulation techniques.
+![Rock Paper Scissors](./img/img.png)
+![Rock Paper Scissors](./img/img2.png)
 
 ## Description
 
@@ -38,4 +40,3 @@ I invite feedback on the project, particularly regarding code quality and DRYnes
 This assignment provided hands-on experience with DOM manipulation and JavaScript. While open to improvement, it serves as a testament to my growing proficiency in web development.
 
 If you would like to review the code or provide feedback, please let me know, and I'll gladly share the relevant code files.
-
