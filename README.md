@@ -1,6 +1,6 @@
 # Rock✊ Paper✋ Scissors✌
 
-[Try it out!](http://selormdev.me/TOP-rock-paper-scissors/)
+[Try it out!](http://selormdev.me/rock-paper-scissors/)
 
 ## Overview
 
